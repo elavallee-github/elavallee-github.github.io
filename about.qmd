@@ -16,4 +16,4 @@ about:
 
 ---
 
-About this blog
+This is my super cool about section of my blog
