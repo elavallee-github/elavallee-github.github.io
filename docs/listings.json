@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/ReplicationPost/ReplicationStudy.html",
+      "/posts/WhoseCosts-blog/OptimalDecisionMaking.html",
+      "/posts/penguin-blog/PenguinBlog.html",
       "/posts/new-test-post/index.html",
       "/posts/new-new-test-post/index.html",
       "/posts/example-blog-post/index.html"
