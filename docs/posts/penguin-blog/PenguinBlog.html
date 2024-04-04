@@ -212,7 +212,8 @@ background-size: cover;
 
 
 
-<p>Abstract:</p>
+<section id="abstract" class="level3">
+<h3 class="anchored" data-anchor-id="abstract">Abstract:</h3>
 <p>The goal of this exploration is to train a model (Linear Regression or other) that can predict the species of a penguin from the palmer penguins dataset with 100% accuracy using 1 qualitative and 2 quantitative features. To begin this exploration, I filtered the data to allow for easier training to be completed. At the same time as filtering the data, I did some preliminary investigations into what combination of qualitative and quantitative features would be lead to predicting the correct penguin species. That investigation was done via grouping and aggregating the dataset and creating graphs comparing features. To actually confirm which combination of features would best predict penguin species I used the provided code from Professor Chodrow to loop through all possible feature combinations and check cross validation and training scores of each. I compiled that data into a dataframe and chose the set of features with the highest scores, that turned out to be island, culmen length, and culmen depth. That combination of features produced a Linear Regression model with 100% accuracy on the testing dataset.</p>
 <p>Import training set and convert it to a pandas dataframe</p>
 <div id="cell-3" class="cell" data-execution_count="2">
@@ -490,6 +491,7 @@ background-size: cover;
 </div>
 </div>
 </div>
+</section>
 <section id="feature-exploration" class="level3">
 <h3 class="anchored" data-anchor-id="feature-exploration">Feature exploration:</h3>
 <p>Figures produced comparing two quantitative features from the training data against one qualitative one. Following that is a grouping of the dataset specifically looking at mean Flipper Length of the different species compared to sex.</p>
@@ -796,7 +798,9 @@ background-size: cover;
 </div>
 </div>
 <p>Looking at the above confusion matrix we are correctly predicting all of the categories we possibly can. The first column is predicted Biscoe islands, the second predicted Dream, and third predicted Torgersen and as we can see all the islands were correctly predicted.</p>
-<p>Discussion:</p>
+</section>
+<section id="discussion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion">Discussion:</h3>
 <p>Looking back at the results from this experimentation, we can see that when working with the palmer penguins dataset we can produced a linear regression model that predicts the species of a test set that hasn’t been seen before with 100% accuracy when the model is trained using Island, Culmen Length, and Culmen Depth. However, I personally am very skeptical of a model that can predict with 100% accuracy, no amount of features will ever be a perfect calculator for predicting something and I hypothesize that if the palmer penguins dataset was larger and there were more outliers we wouldn’t see such a high training score. That being said, it is cool to see how we can train a model to pattern recognize and we can be smart about what patterns we guide our model to recognize in order to best set up its predicting capabilities.</p>
 
 
