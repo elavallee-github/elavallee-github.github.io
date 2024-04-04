@@ -211,6 +211,7 @@ background-size: cover;
 
 <section id="link-to-perceptron.py" class="level3">
 <h3 class="anchored" data-anchor-id="link-to-perceptron.py">link to perceptron.py</h3>
+<p>https://github.com/elavallee-github/elavallee-github.github.io/blob/6cfd3acf71b795806d596d91983a881c74b2064a/posts/perceptron-blog/perceptron.py</p>
 <p>For my perceptron.grad() implementation (without mini-batching) I first calculate the score and then simply return 1.0<em>(s_i</em>y_i &lt; 0)<em>y</em>X. This correctly implements the math of the perceptron algorithm as we are performing the perceptron update: w = w + y_i<em>x_i only if s_i</em>y_i &lt; 0 which the first half of our return statement is doing. As for the mini-batching, I declared an alpha value and then calculate k based on the size of the batch that has been supplied to the grad() method. Then I set up a for loop compounding what I call the total grad for each value of the mini-batch, I then average that and multiply it by our learning rate and then return.</p>
 </section>
 <section id="abstract" class="level2">
