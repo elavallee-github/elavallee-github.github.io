@@ -218,7 +218,7 @@ background-size: cover;
 </section>
 <section id="part-a-implement-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="part-a-implement-logistic-regression">Part A: Implement Logistic Regression</h3>
-<div id="cell-4" class="cell" data-execution_count="7">
+<div id="cell-4" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> logistic <span class="im">import</span> LogisticRegression, GradientDescentOptimizer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -227,7 +227,7 @@ background-size: cover;
   %reload_ext autoreload</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="81">
+<div id="cell-5" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classification_data(n_points <span class="op">=</span> <span class="dv">300</span>, noise <span class="op">=</span> <span class="fl">0.2</span>, p_dims <span class="op">=</span> <span class="dv">2</span>):</span>
@@ -262,7 +262,7 @@ background-size: cover;
 <section id="visualization-code" class="level4">
 <h4 class="anchored" data-anchor-id="visualization-code">Visualization Code</h4>
 <p>Taken from live notes by Professor Chodrow</p>
-<div id="cell-7" class="cell" data-execution_count="16">
+<div id="cell-7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_line(w, x_min, x_max, ax, <span class="op">**</span>kwargs):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    w_ <span class="op">=</span> w.flatten()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> torch.linspace(x_min, x_max, <span class="dv">101</span>)</span>
@@ -273,8 +273,8 @@ background-size: cover;
 <section id="main-training-loop" class="level4">
 <h4 class="anchored" data-anchor-id="main-training-loop">Main Training Loop</h4>
 <p>The following code will be used to streamline testing of different learning rates and how momentum affects the efficiency of logistic regression model training. One plot will be produced to visualize the dividing line in the data and another plot will be used to visualize the loss value over the iterations.</p>
-<div id="cell-9" class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_LR(X, y, alpha, beta):</span>
+<div id="cell-9" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_LR(X, y, alpha, beta, max_iters):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    LR <span class="op">=</span> LogisticRegression() </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -283,7 +283,7 @@ background-size: cover;
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> []</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    w_prev <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_iters):</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add other stuff to e.g. keep track of the loss over time. </span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> LR.loss(X,y)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        loss_vec.append(loss)</span>
@@ -294,27 +294,31 @@ background-size: cover;
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        opt.step(X, y, alpha <span class="op">=</span> alpha, beta <span class="op">=</span> beta, w_prev<span class="op">=</span>w_prev)</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        w_prev <span class="op">=</span> w</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    plot_classification_data(X, y, ax[<span class="dv">0</span>])</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    draw_line(LR.w, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, ax[<span class="dv">0</span>], color <span class="op">=</span> <span class="st">"black"</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].plot(loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].scatter(torch.arange(<span class="bu">len</span>(loss_vec)), loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    labs <span class="op">=</span> plt.gca().<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Logistic Regression Iteration (Updates Only)"</span>, ylabel <span class="op">=</span> <span class="st">"loss"</span>)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> LR.w, loss_vec</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    plot_classification_data(X, y, ax[<span class="dv">0</span>])</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    draw_line(LR.w, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, ax[<span class="dv">0</span>], color <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].plot(loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].scatter(torch.arange(<span class="bu">len</span>(loss_vec)), loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    labs <span class="op">=</span> plt.gca().<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Logistic Regression Iteration (Updates Only)"</span>, ylabel <span class="op">=</span> <span class="st">"loss"</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="135">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_LR(X, y, alpha<span class="op">=</span><span class="fl">0.1</span>, beta<span class="op">=</span><span class="fl">0.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="LogisticRegressionBlog_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Plot 1: Logistic Regression training using a learning rate of 0.1 and without momentum</p>
-<div id="cell-12" class="cell" data-execution_count="136">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train_LR(X, y, alpha<span class="op">=</span><span class="fl">0.5</span>, beta<span class="op">=</span><span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>w_nm, loss_vec_nm <span class="op">=</span> train_LR(X, y, alpha<span class="op">=</span><span class="fl">0.1</span>, beta<span class="op">=</span><span class="fl">0.0</span>, max_iters<span class="op">=</span><span class="dv">5000</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>w_wm, loss_vec_wm <span class="op">=</span> train_LR(X, y, alpha<span class="op">=</span><span class="fl">0.5</span>, beta<span class="op">=</span><span class="fl">0.9</span>, max_iters<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">7</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plot_classification_data(X, y, ax[<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plot_classification_data(X, y, ax[<span class="dv">1</span>,<span class="dv">0</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>draw_line(w_nm, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, ax[<span class="dv">0</span>,<span class="dv">0</span>], color <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>draw_line(w_wm, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, ax[<span class="dv">1</span>,<span class="dv">0</span>], color <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(loss_vec_nm, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].scatter(torch.arange(<span class="bu">len</span>(loss_vec_nm)), loss_vec_nm, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(loss_vec_wm, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].scatter(torch.arange(<span class="bu">len</span>(loss_vec_wm)), loss_vec_wm, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>labs <span class="op">=</span> plt.gca().<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Logistic Regression Iteration (Updates Only)"</span>, ylabel <span class="op">=</span> <span class="st">"loss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -323,55 +327,55 @@ background-size: cover;
 </div>
 </div>
 </div>
-<p>Plot 2: Logistic Regression results using a learning rate of 0.5 and a momentum with a beta value of 0.9</p>
-<p>Looking at the above plots (plots 1 and 2) we can see that visually my implementation of the logistic regression model is correct in that both plots have a dividing line that seemingly divides the data correctly between the two groups. We also see a trend we were hoping to observe where when we use momentum we see a decrease in the number of iterations it takes for us to find that dividing line and level out in our loss calculations.</p>
+<p>Plot 1: (a) Logistic Regression training using a learning rate of 0.1 and without momentum (b) Logistic Regression results using a learning rate of 0.5 and a momentum with a beta value of 0.9</p>
+<p>Looking at the above plots (plots 1a and 1b) we can see that visually my implementation of the logistic regression model is correct in that both plots have a dividing line that seemingly divides the data correctly between the two groups. We also see a trend we were hoping to observe where when we use momentum we see a decrease in the number of iterations it takes for us to find that dividing line and level out in our loss calculations.</p>
 </section>
 </section>
 <section id="training-models-with-dimensions-larger-than-their-points" class="level3">
 <h3 class="anchored" data-anchor-id="training-models-with-dimensions-larger-than-their-points">Training Models with Dimensions Larger than their Points</h3>
-<div id="cell-16" class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">50</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">100</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">50</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">50</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">100</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">50</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Below we are training a logistic regression model on our <code>X_train</code> and <code>y_train</code> data points</p>
-<div id="cell-18" class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression() </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>loss_vec <span class="op">=</span> []</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> []</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>w_prev <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add other stuff to e.g. keep track of the loss over time. </span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> LR.loss(X_train,y_train)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    loss_vec.append(loss)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w_prev <span class="op">==</span> <span class="va">None</span>:</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        w_prev <span class="op">=</span> LR.w</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> LR.w</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    weights.append(w)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    opt.step(X_train, y_train, alpha <span class="op">=</span> <span class="fl">0.5</span>, beta <span class="op">=</span> <span class="fl">0.9</span>, w_prev<span class="op">=</span>w_prev)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    w_prev <span class="op">=</span> w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression() </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>loss_vec <span class="op">=</span> []</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> []</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>w_prev <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add other stuff to e.g. keep track of the loss over time. </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> LR.loss(X_train,y_train)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    loss_vec.append(loss)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w_prev <span class="op">==</span> <span class="va">None</span>:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        w_prev <span class="op">=</span> LR.w</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> LR.w</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    weights.append(w)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    opt.step(X_train, y_train, alpha <span class="op">=</span> <span class="fl">0.5</span>, beta <span class="op">=</span> <span class="fl">0.9</span>, w_prev<span class="op">=</span>w_prev)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    w_prev <span class="op">=</span> w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">*</span>(LR.predict(X_train)<span class="op">==</span>y_train)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
+<div id="cell-18" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">*</span>(LR.predict(X_train)<span class="op">==</span>y_train)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>tensor(1.)</code></pre>
 </div>
 </div>
 <p>As we can see from the above output we have successfully trained a logistic regression model that has 100% prediction accuracy on the training data</p>
-<div id="cell-21" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">*</span>(LR.predict(X_test) <span class="op">==</span> y_test)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="143">
-<pre><code>tensor(0.9600)</code></pre>
+<div id="cell-20" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">*</span>(LR.predict(X_test) <span class="op">==</span> y_test)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor(1.)</code></pre>
 </div>
 </div>
-<p>However looking at the prediction accuracy on the testing data we can see it is 96% which is still pretty good, but it is not as good as our training data which leads me to believe there is an element of overfitting going on in the training data.</p>
+<p>Interestingly looking at the prediction accuracy on the testing data we can also see a prediction accuracy of 100% if our number of iterations in our training loop is large enough. This is really interesting as with a large amount of features we would expect to see overfitting but we don’t in this case.</p>
 </section>
 <section id="discussion" class="level3">
 <h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
-<p>During this blog post we experimented on the prediction capabilities of my implementation of a logistic regression model. By running multiple datasets through the training loop I coded earlier in this blog we could see how the learning rate of a model as well as whether or not momentum is used affects a models classification abilities. From my experimenting we saw that by using a learning rate of <code>0.5</code> and a momentum learning rate of <code>0.9</code> we can decrease the number of training loop iterations it takes for a model to reach a low loss score. Without momentum it would take the model close to 100 iterations to reach a loss score close to 0, however with the use of momentum we could decrease that to around 20 iterations. Additionally through my testing we saw that we could train a model to 100% prediction accuracy on its training data even if there are more features than there are data points. However, there is a risk of overfitting the training data as in the case seen above we have 100% prediction accuracy on the training data but only 96% on the test data. Overall it seems that a logistic regression model isn’t the most complicated algorithm to implement and is efficient at reducing the number of iterations it takes for a model to be trained.</p>
+<p>During this blog post we experimented on the prediction capabilities of my implementation of a logistic regression model. By running multiple datasets through the training loop I coded earlier in this blog we could see how the learning rate of a model as well as whether or not momentum is used affects a models classification abilities. From my experimenting we saw that by using a learning rate of <code>0.5</code> and a momentum learning rate of <code>0.9</code> we can decrease the number of training loop iterations it takes for a model to reach a low loss score. Without momentum it would take the model close to 1000 iterations to reach a loss score close to 0, however with the use of momentum we could decrease that to around 20 iterations. Additionally through my testing we saw that we could train a model to 100% prediction accuracy on its training data even if there are more features than there are data points. Impressively the model doesn’t seem to fall victim to overfitting. When training on a dataset with more features than there are data points we reached a prediction accuracy of 100% on the training data and a prediction accuracy of 100% on the test accuracy meaning we saw no overfitting which is really cool to see. Overall it seems that a logistic regression model isn’t the most complicated algorithm to implement and is efficient at reducing the number of iterations it takes for a model to be trained.</p>
 
 
 </section>
