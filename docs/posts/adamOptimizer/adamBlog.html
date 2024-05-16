@@ -257,7 +257,7 @@ background-size: cover;
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="150">
+<div id="cell-6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">1000</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> classification_data(n_points <span class="op">=</span> <span class="dv">1000</span>, noise <span class="op">=</span> <span class="fl">0.5</span>, p_dims <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -270,7 +270,7 @@ background-size: cover;
 </section>
 <section id="adam-implementation-and-testing" class="level3">
 <h3 class="anchored" data-anchor-id="adam-implementation-and-testing">Adam Implementation and Testing</h3>
-<div id="cell-9" class="cell" data-execution_count="149">
+<div id="cell-9" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -308,7 +308,7 @@ background-size: cover;
 <span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> losses, weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="57">
+<div id="cell-10" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -352,21 +352,21 @@ background-size: cover;
 <span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Elapsed time: </span><span class="sc">{</span>et <span class="op">-</span> st<span class="sc">}</span><span class="ss"> seconds'</span>)</span>
 <span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> losses, weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="161">
+<div id="cell-11" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LR_1 <span class="op">=</span> LogisticRegression()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>losses, weights <span class="op">=</span> train_adam(LR_1, X_train, y_train, alpha<span class="op">=</span><span class="fl">0.0001</span>, k_epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Elapsed time: 29.513484001159668 seconds</code></pre>
+<pre><code>Elapsed time: 23.839514017105103 seconds</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="168">
+<div id="cell-12" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>LR_2 <span class="op">=</span> LogisticRegression()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>stoch_losses, stoch_weights <span class="op">=</span> stochastic_train(LR_2, X_train, y_train, alpha <span class="op">=</span> <span class="fl">0.2</span>, beta <span class="op">=</span> <span class="fl">0.0</span>, k_epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>stoch_losses, stoch_weights <span class="op">=</span> stochastic_train(LR_2, X_train, y_train, alpha <span class="op">=</span> <span class="fl">0.7</span>, beta <span class="op">=</span> <span class="fl">0.0</span>, k_epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Elapsed time: 0.18346333503723145 seconds</code></pre>
+<pre><code>Elapsed time: 0.2952911853790283 seconds</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="169">
+<div id="cell-13" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">6</span>))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(losses, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].scatter(torch.arange(<span class="bu">len</span>(losses)), losses, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
@@ -374,7 +374,7 @@ background-size: cover;
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].scatter(torch.arange(<span class="bu">len</span>(stoch_losses)), stoch_losses, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Adam Optimizer'</span>)</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Stochastic Gradient Descent'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="169">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>Text(0.5, 1.0, 'Stochastic Gradient Descent')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -385,7 +385,7 @@ background-size: cover;
 </div>
 </div>
 </div>
-<p>Doing vanilla stochastic gradient descent I was able to achieve convergence significantly faster than using the Adam optimizer, with the run time of the cell taking just 0.18 seconds. The adam optimizer code took 29.5 seconds to run, but was able to achieve of a lower loss in about 5 epochs while the SGD achieved a higher loss convergence at about 6 epochs.</p>
+<p>Doing vanilla stochastic gradient descent I was able to achieve convergence significantly faster than using the Adam optimizer, with the run time of the cell taking just 0.29 seconds. The adam optimizer code took 23.8 seconds to run, but was able to achieve convergence in about 15 epochs while it looks like it took SGD about 18 to 20 epochs to converge.</p>
 </section>
 <section id="digits-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="digits-analysis">Digits Analysis</h3>
@@ -463,13 +463,13 @@ Elapsed time: 0.07415390014648438 seconds</code></pre>
 <section id="palmer-penguins-testing" class="level3">
 <h3 class="anchored" data-anchor-id="palmer-penguins-testing">Palmer Penguins Testing</h3>
 <p>For my third experiment I am going to use the palmer penguins data from our first blog post.</p>
-<div id="cell-33" class="cell" data-execution_count="81">
+<div id="cell-33" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>train_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/palmer-penguins/train.csv"</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(train_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Parse through dataset and split into features and target values</p>
-<div id="cell-35" class="cell" data-execution_count="82">
+<div id="cell-35" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>le.fit(train[<span class="st">"Species"</span>])</span>
@@ -486,7 +486,7 @@ Elapsed time: 0.07415390014648438 seconds</code></pre>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> prepare_data(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I am hardcoding the features that I want which are taken from my first blog post as I know these work well for predicting the target values we want. Before creating the torch tensors for model training I also need to conver the boolean values returned from <code>pd.get_dummies()</code> to be float values.</p>
-<div id="cell-37" class="cell" data-execution_count="101">
+<div id="cell-37" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'Culmen Length (mm)'</span>, <span class="st">'Culmen Depth (mm)'</span>, <span class="st">'Island_Biscoe'</span>, <span class="st">'Island_Dream'</span>, <span class="st">'Island_Torgersen'</span>]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train[cols]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -499,18 +499,18 @@ Elapsed time: 0.07415390014648438 seconds</code></pre>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>y_peng <span class="op">=</span> torch.Tensor(y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Model training loop to compare vanilla SGD and ADAM</p>
-<div id="cell-39" class="cell" data-execution_count="145">
+<div id="cell-39" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>LR_adam <span class="op">=</span> LogisticRegression()</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>LR_sgd <span class="op">=</span> LogisticRegression()</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>adam_losses, adam_weights <span class="op">=</span> train_adam(LR_adam, X_peng, y_peng, alpha <span class="op">=</span> <span class="fl">0.000035</span>, k_epochs<span class="op">=</span><span class="dv">10</span>, batch_size<span class="op">=</span><span class="dv">32</span>)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>SGD_losses, SGD_weights <span class="op">=</span> stochastic_train(LR_sgd, X_peng, y_peng, alpha <span class="op">=</span> <span class="fl">.15</span>, beta <span class="op">=</span> <span class="fl">0.9</span>, k_epochs<span class="op">=</span><span class="dv">10</span>, batch_size<span class="op">=</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>adam_losses, adam_weights <span class="op">=</span> train_adam(LR_adam, X_peng, y_peng, alpha <span class="op">=</span> <span class="fl">0.00004</span>, k_epochs<span class="op">=</span><span class="dv">10</span>, batch_size<span class="op">=</span><span class="dv">32</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>SGD_losses, SGD_weights <span class="op">=</span> stochastic_train(LR_sgd, X_peng, y_peng, alpha <span class="op">=</span> <span class="fl">.1</span>, beta <span class="op">=</span> <span class="fl">0.9</span>, k_epochs<span class="op">=</span><span class="dv">10</span>, batch_size<span class="op">=</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Elapsed time: 10.041518688201904 seconds
-Elapsed time: 0.044052839279174805 seconds</code></pre>
+<pre><code>Elapsed time: 10.23051118850708 seconds
+Elapsed time: 0.04733896255493164 seconds</code></pre>
 </div>
 </div>
-<div id="cell-40" class="cell" data-execution_count="146">
+<div id="cell-40" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ax.plot(adam_losses, color <span class="op">=</span> <span class="st">"firebrick"</span>, label<span class="op">=</span><span class="st">"Adam"</span>)</span>
@@ -527,7 +527,7 @@ Elapsed time: 0.044052839279174805 seconds</code></pre>
 </div>
 </div>
 </div>
-<p>Looking at the above plot we see that SGD and ADAM converge around the same time, with ADAM maybe convergin an epoch before SGD, but SGD reaches a lower converged loss. Interestingly using the palmer penguin dataset the data seems a lot more sensitive to very slightly changes to the learning rate. Compared to the digits dataset the SGD learning rate is significantly smaller and ADAM’s lr for this test is also smaller than it has been in the previous comparisons. Similar to the previous steps ADAM takes a lot longer to run than SGD with the timing for this test being 10.04 seconds for ADAM and 0.04 seconds for SGD to run.</p>
+<p>Looking at the above plot we see that SGD and ADAM converge around the same time. The two plots almost perfectly mimic one another which is really interesting. Interestingly using the palmer penguin dataset the data seems a lot more sensitive to very slightly changes to the learning rate. Compared to the digits dataset the SGD learning rate is significantly smaller and ADAM’s lr for this test is also smaller than it has been in the previous comparisons. Similar to the previous steps ADAM takes a lot longer to run than SGD with the timing for this test being 10.04 seconds for ADAM and 0.04 seconds for SGD to run.</p>
 </section>
 <section id="summary" class="level3">
 <h3 class="anchored" data-anchor-id="summary">Summary</h3>
