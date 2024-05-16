@@ -232,6 +232,9 @@ background-size: cover;
 
 
 
+<section id="link-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="link-to-github"><a href="https://github.com/elavallee-github/ml0451-project">Link to github</a></h3>
+</section>
 <section id="abstract" class="level3">
 <h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
 <p>For my final project I decided to focus on a dataset that holds information regarding Oscar winners and nominees from 1990 to 2021. Through an analysis of this dataset I could improve my knowledge of classification machine learning models and attempt to see if there is some connecting characteristic that can be used to predict if a film or actress/actor will be more likely to win an academy award. Many people will watch films because of them winning an Oscar, and if there is a specific aspect of films that makes them be awarded then maybe we can change that to make the awards more equitable to expose consumers to a more diverse set of media. To address this problem I attempted to train a logistic regression model that could predict whether or not a film or actor/actress would win an academy award. While I did sucessfully train a model with 87% training accuracy and a True negative rate of 90%, the model was overfit to the training data and the true positive rate of the model was only 13%. So I don’t believe that I was able to produce an accurate model for predicting if a film is going to win an Oscar or not.</p>
@@ -254,7 +257,7 @@ background-size: cover;
 </section>
 <section id="the-data" class="level3">
 <h3 class="anchored" data-anchor-id="the-data">The Data</h3>
-<div id="cell-5" class="cell" data-execution_count="1">
+<div id="cell-6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>labels_url <span class="op">=</span> <span class="st">"https://github.com/MengtingWan/oscar/raw/master/data/df_labels.csv"</span></span>
@@ -264,7 +267,7 @@ background-size: cover;
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.read_csv(features_url)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df_titles <span class="op">=</span> pd.read_json(titles_url, lines<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="2">
+<div id="cell-7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_labels.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -344,7 +347,7 @@ background-size: cover;
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="3">
+<div id="cell-8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_features.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -457,7 +460,7 @@ background-size: cover;
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="5">
+<div id="cell-9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_titles.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
